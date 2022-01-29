@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@jiman24/commandment': ^0.4.0
+  '@jiman24/discordjs-prompt': ^0.0.1
   '@jiman24/discordjs-utils': ^0.1.2
   '@types/luxon': ^2.0.9
   discord.js: ^13.6.0
@@ -12,6 +13,7 @@ specifiers:
 
 dependencies:
   '@jiman24/commandment': 0.4.0
+  '@jiman24/discordjs-prompt': 0.0.1
   '@jiman24/discordjs-utils': 0.1.2
   discord.js: 13.6.0
   dotenv: 14.2.0
@@ -55,6 +57,16 @@ packages:
       common-tags: 1.8.2
       discord.js: 13.6.0
       table-layout: 3.0.0
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - utf-8-validate
+    dev: false
+
+  /@jiman24/discordjs-prompt/0.0.1:
+    resolution: {integrity: sha512-tNidOjU7T50HjUduxpTNFkP3NfPRutra7u6yamNG8aR63hutoykqDkacp8vl9vYczUwS++m1mOPC91WIbfRIkg==}
+    dependencies:
+      discord.js: 13.6.0
     transitivePeerDependencies:
       - bufferutil
       - encoding

@@ -1,10 +1,11 @@
 {
-        "scripts": {
-          "dev": "nodemon dist/index.js",
-          "watch": "tsc -w"
-        },
+	"scripts": {
+		"dev": "nodemon dist/index.js",
+		"watch": "tsc -w"
+	},
 	"dependencies": {
 		"@jiman24/commandment": "^0.4.0",
+		"@jiman24/discordjs-prompt": "^0.0.1",
 		"@jiman24/discordjs-utils": "^0.1.2",
 		"discord.js": "^13.6.0",
 		"dotenv": "^14.2.0",
