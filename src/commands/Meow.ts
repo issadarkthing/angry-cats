@@ -4,10 +4,24 @@ import { Prompt } from "@jiman24/discordjs-prompt";
 import { ButtonHandler } from "@jiman24/discordjs-button";
 import { Player } from "../structure/Player";
 import { Game } from "../structure/Game";
+import { client } from "..";
+import { DateTime } from "luxon";
+import { LeaderboardData } from "./Leaderboard";
 
 export default class extends Command {
   name = "meow";
   description = "battle with your angry cat";
+
+  private update(winnerID: string, winnerName: string, leaderboard: LeaderboardData[]) {
+
+    const winner = leaderboard.find(x => x.id === winnerID);
+
+    if (winner) {
+      winner.wins++;
+    } else {
+      leaderboard.push({ id: winnerID, wins: 1, name: winnerName });
+    }
+  }
 
   async exec(msg: Message) {
     const prompt = new Prompt(msg);
@@ -73,8 +87,27 @@ export default class extends Command {
 
     if (winner) {
       msg.channel.send(`${winner.owner.username} won the battle!`);
+
+      const date = DateTime.now();
+
+      const weekID = `${date.weekNumber}-${date.year}`;
+      const weeklyPoints = client.weekly.get(weekID) || [];
+      this.update(winner.owner.id, winner.owner.username, weeklyPoints);
+      client.weekly.set(weekID, weeklyPoints);
+
+      const monthID = `${date.month}-${date.year}`;
+      const monthlyPoints = client.monthly.get(monthID) || [];
+      this.update(winner.owner.id, winner.owner.username, monthlyPoints);
+      client.monthly.set(monthID, monthlyPoints);
+
+      const yearID = `${date.year}`;
+      const yearlyPoints = client.yearly.get(yearID) || [];
+      this.update(winner.owner.id, winner.owner.username, yearlyPoints);
+      client.yearly.set(yearID, yearlyPoints);
+
     } else {
       msg.channel.send(`It's a tie!`);
     }
+
   }
 }
