@@ -5,6 +5,7 @@ import { Player } from "../structure/Player";
 export default class extends Command {
   name = "cats";
   aliases = ["cat"];
+  description = "shows all your cat";
 
   async exec(msg: Message) {
 

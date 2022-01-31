@@ -6,6 +6,7 @@ import { Player } from "../structure/Player";
 
 export default class extends Command {
   name = "catimage";
+  description = "adds image to your angry cat";
 
   async exec(msg: Message, args: string[]) {
     const prompt = new Prompt(msg);
