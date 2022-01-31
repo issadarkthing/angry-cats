@@ -32,5 +32,6 @@ export default class extends Command {
 
     player.save();
     msg.channel.send("Successfully redeemed");
+    msg.channel.send({ embeds: [cat.show()] });
   }
 }
