@@ -7,6 +7,7 @@ import { Cat } from "../structure/Cat";
 export default class extends Command {
   name = "register";
   description = "register new cat with attributes";
+  disable = true;
 
   private async getAttribute(prompt: Prompt, attribute: string) {
 
