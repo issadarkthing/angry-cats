@@ -42,6 +42,7 @@ export class Cat {
   show() {
     const embed = new MessageEmbed()
       .setColor("RANDOM")
+      .addField("ID", this.id)
       .addField("Hat", this.hat.toString(), true)
       .addField("Mouth", this.mouth.toString(), true)
       .addField("Eyes", this.eyes.toString(), true)
