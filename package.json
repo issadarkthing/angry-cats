@@ -5,8 +5,10 @@
 	},
 	"dependencies": {
 		"@jiman24/commandment": "^0.4.0",
+		"@jiman24/discordjs-button": "^0.1.0",
 		"@jiman24/discordjs-prompt": "^0.0.1",
 		"@jiman24/discordjs-utils": "^0.1.2",
+		"common-tags": "^1.8.2",
 		"discord.js": "^13.6.0",
 		"dotenv": "^14.2.0",
 		"enmap": "^5.8.7",
@@ -15,6 +17,7 @@
 		"typescript": "^4.5.4"
 	},
 	"devDependencies": {
+		"@types/common-tags": "^1.8.1",
 		"@types/luxon": "^2.0.9"
 	}
 }

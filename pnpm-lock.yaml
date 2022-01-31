@@ -2,9 +2,12 @@ lockfileVersion: 5.3
 
 specifiers:
   '@jiman24/commandment': ^0.4.0
+  '@jiman24/discordjs-button': ^0.1.0
   '@jiman24/discordjs-prompt': ^0.0.1
   '@jiman24/discordjs-utils': ^0.1.2
+  '@types/common-tags': ^1.8.1
   '@types/luxon': ^2.0.9
+  common-tags: ^1.8.2
   discord.js: ^13.6.0
   dotenv: ^14.2.0
   enmap: ^5.8.7
@@ -14,8 +17,10 @@ specifiers:
 
 dependencies:
   '@jiman24/commandment': 0.4.0
+  '@jiman24/discordjs-button': 0.1.0
   '@jiman24/discordjs-prompt': 0.0.1
   '@jiman24/discordjs-utils': 0.1.2
+  common-tags: 1.8.2
   discord.js: 13.6.0
   dotenv: 14.2.0
   enmap: 5.8.7
@@ -24,6 +29,7 @@ dependencies:
   typescript: 4.5.4
 
 devDependencies:
+  '@types/common-tags': 1.8.1
   '@types/luxon': 2.0.9
 
 packages:
@@ -65,6 +71,16 @@ packages:
       - utf-8-validate
     dev: false
 
+  /@jiman24/discordjs-button/0.1.0:
+    resolution: {integrity: sha512-RDddM2bbCM+ovznofI616f4tdvX6IVZhK/1KmNBt7hTGjKYbOpjabVN3mZXKIQzG3KO91syM2Uqm9SWaWh/yYw==}
+    dependencies:
+      discord.js: 13.6.0
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - utf-8-validate
+    dev: false
+
   /@jiman24/discordjs-prompt/0.0.1:
     resolution: {integrity: sha512-tNidOjU7T50HjUduxpTNFkP3NfPRutra7u6yamNG8aR63hutoykqDkacp8vl9vYczUwS++m1mOPC91WIbfRIkg==}
     dependencies:
@@ -95,6 +111,10 @@ packages:
     resolution: {integrity: sha512-wwOvh0eO3PiTEivGJWiZ+b946SlMSb4pe+y+Ur/4S87cwo09pYi+FWHHnbrM3W9W7cBYKDqQXcrFYjYUCOJUEQ==}
     engines: {node: '>=10'}
     dev: false
+
+  /@types/common-tags/1.8.1:
+    resolution: {integrity: sha512-20R/mDpKSPWdJs5TOpz3e7zqbeCNuMCPhV7Yndk9KU2Rbij2r5W4RzwDPkzC+2lzUqXYu9rFzTktCBnDjHuNQg==}
+    dev: true
 
   /@types/luxon/2.0.9:
     resolution: {integrity: sha512-ZuzIc7aN+i2ZDMWIiSmMdubR9EMMSTdEzF6R+FckP4p6xdnOYKqknTo/k+xXQvciSXlNGIwA4OPU5X7JIFzYdA==}
