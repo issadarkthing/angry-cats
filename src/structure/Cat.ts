@@ -15,15 +15,11 @@ export class Cat {
   constructor(public id: string) {
     const seed = this.createSeed(id);
     const randomizer = new Random(MersenneTwister19937.seedWithArray(seed));
-    this.hat = this.random(randomizer);
-    this.mouth = this.random(randomizer);
-    this.eyes = this.random(randomizer);
-    this.weapon = this.random(randomizer);
-    this.accessories = this.random(randomizer);
-  }
-
-  private random(randomizer: Random) {
-    return randomizer.integer(this.min, this.max);
+    this.hat = randomizer.integer(1, 15);
+    this.mouth = randomizer.integer(1, 11);
+    this.eyes = randomizer.integer(1, 17);
+    this.weapon = randomizer.integer(1, 15);
+    this.accessories = randomizer.integer(1, 20);
   }
 
   private createSeed(id: string) {
