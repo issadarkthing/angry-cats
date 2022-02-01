@@ -1,4 +1,4 @@
-
+*.zip
 data
 dist
 node_modules
