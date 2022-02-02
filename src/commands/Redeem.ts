@@ -1,6 +1,5 @@
 import { Command } from "@jiman24/commandment";
 import { Message } from "discord.js";
-import { client } from "..";
 import { Cat } from "../structure/Cat";
 import { Player } from "../structure/Player";
 
@@ -18,13 +17,7 @@ export default class extends Command {
       throw new Error("no code given");
     }
 
-    const catRedeemed = client.cats.has(code);
-
-    if (catRedeemed) {
-      throw new Error("this angry cat has been redeemed");
-    }
-
-    const cat = new Cat(code);
+    const cat = Cat.fromID(code);
     cat.save();
 
     const player = Player.fromID(msg.author.id);
