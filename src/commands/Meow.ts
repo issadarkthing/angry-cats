@@ -7,6 +7,7 @@ import { Game } from "../structure/Game";
 import { client } from "..";
 import { DateTime } from "luxon";
 import { LeaderboardData } from "./Leaderboard";
+import { Cat } from "../structure/Cat";
 
 export default class extends Command {
   name = "meow";
@@ -48,7 +49,12 @@ export default class extends Command {
     const player1 = Player.fromID(msg.author.id);
     const player2 = Player.fromID(opponent.id);
 
-    await msg.channel.send({ embeds: player1.cats.map(x => x.show()) });
+    if (player1.cats.length === 0) {
+      throw new Error(`${msg.author} has no cats`);
+    } else {
+      await msg.channel.send({ embeds: player1.cats.map(x => x.show()) });
+    }
+
     const cat1ID = await prompt.ask(
       `Please select your fighter ${msg.author} by copy paste angry cat id`
     );
@@ -59,7 +65,12 @@ export default class extends Command {
       throw new Error("No cat found");
     }
 
-    await msg.channel.send({ embeds: player2.cats.map(x => x.show()) });
+    if (player2.cats.length === 0) {
+      throw new Error(`${opponent} has no cats`);
+    } else {
+      await msg.channel.send({ embeds: player2.cats.map(x => x.show()) });
+    }
+
     const cat2ID = await prompt.ask(
       `Please select your fighter ${opponent} by copy paste angry cat id`,
       { filter: (msg) => msg.author.id === opponent!.id }
