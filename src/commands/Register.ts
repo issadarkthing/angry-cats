@@ -37,7 +37,7 @@ export default class extends Command {
     cat.mouth = mouth;
     cat.eyes = eyes;
     cat.weapon = weapon;
-    cat.accessories = accessories;
+    cat.surpriseAttack = accessories;
     cat.imageUrl = image.attachments.first()!.url;
 
     cat.save();

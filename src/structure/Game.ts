@@ -17,7 +17,7 @@ export class Game {
 
   async run() {
 
-    const attribs: (keyof Cat)[] = ["hat", "mouth", "eyes", "weapon", "accessories"];
+    const attribs: (keyof Cat)[] = ["hat", "mouth", "eyes", "weapon", "surpriseAttack"];
     let g1Score = 0;
     let g2Score = 0;
 
