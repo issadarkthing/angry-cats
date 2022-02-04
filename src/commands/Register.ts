@@ -29,8 +29,8 @@ export default class extends Command {
     const mouth = await this.getAttribute(prompt, "Mouth");
     const eyes = await this.getAttribute(prompt, "Eyes");
     const weapon = await this.getAttribute(prompt, "Weapon");
-    const accessories = await this.getAttribute(prompt, "Accessories");
-    const image = await prompt.collect("Please upload an image for this angry cat");
+    const accessories = await this.getAttribute(prompt, "Surprise Attack");
+    const image = await prompt.collect("Please upload an image for this angry cat:");
 
     const cat = new Cat(id);
     cat.hat = hat;
