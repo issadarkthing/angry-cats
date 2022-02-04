@@ -7,7 +7,8 @@ export class Cat {
   mouth = 0;
   eyes = 0;
   weapon = 0;
-  accessories = 0;
+  surpriseAttack = 0;
+  name = "";
   imageUrl = "";
   readonly max = 20;
   readonly min = 1;
@@ -19,7 +20,7 @@ export class Cat {
     this.mouth = randomizer.integer(1, 11);
     this.eyes = randomizer.integer(1, 17);
     this.weapon = randomizer.integer(1, 15);
-    this.accessories = randomizer.integer(1, 20);
+    this.surpriseAttack = randomizer.integer(1, 20);
   }
 
   private createSeed(id: string) {
@@ -38,12 +39,9 @@ export class Cat {
   show() {
     const embed = new MessageEmbed()
       .setColor("RANDOM")
-      .addField("ID", this.id)
-      .addField("Hat", this.hat.toString(), true)
-      .addField("Mouth", this.mouth.toString(), true)
-      .addField("Eyes", this.eyes.toString(), true)
-      .addField("Weapon", this.weapon.toString(), true)
-      .addField("Accessories", this.accessories.toString(), true)
+      .addField("UID", this.id)
+      .addField("Name", this.name)
+      .addField("Surprice Attack", this.surpriseAttack.toString(), true)
 
     if (this.imageUrl) {
       embed.setThumbnail(this.imageUrl);
