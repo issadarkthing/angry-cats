@@ -58,8 +58,6 @@ export class Game {
         this.msg.channel.send(text);
 
       } else {
-        const point = roundWinner.owner.id === this.g1.owner.id ? g1Score : g2Score;
-        const ownerName = roundWinner.owner.username;
         const cat = roundWinner.cat;
 
         let text = "";
@@ -98,6 +96,7 @@ export class Game {
 
     if (winner) {
       const loser = winner.cat.id !== this.g1.cat.id ? this.g1 : this.g2;
+      await this.msg.channel.send("https://media0.giphy.com/media/KGYWp6CNdK8W8nSUsb/giphy.gif?cid=790b761112e640d3ce5e9cd000d7d8f58cef474994a73e33&rid=giphy.gif&ct=g");
       await this.msg.channel.send(`You’re a fur-midable opponent ${loser.cat.name}.`);
       await this.msg.channel.send(`The winner is ${winner.cat.name}`);
       await this.msg.channel.send({ embeds: [winner.cat.show()] });
