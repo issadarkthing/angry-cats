@@ -39,7 +39,6 @@ export class Cat {
   show() {
     const embed = new MessageEmbed()
       .setColor("RANDOM")
-      .addField("UID", this.id)
       .addField("Name", this.name)
       .addField("Surprise Attack", this.surpriseAttack.toString(), true)
 
