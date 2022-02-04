@@ -72,7 +72,7 @@ export class Game {
             text = `That was a cat–astrophe. ${cat.name}'s menacing stare earns ${bold(1)} point!`;
             break;
           case "weapon": 
-            text = `Is that weapon even legal? Here comes claw-enforcement. ${bold(1)} point for ${bold(1)}.`;
+            text = `Is that weapon even legal? Here comes claw-enforcement. ${bold(1)} point for ${cat.name}.`;
             break;
           case "surpriseAttack": 
             text = `${cat.name}'s will go down in hiss-tory for that Surprise Attack! ${bold(1)} point`;
