@@ -1,4 +1,4 @@
-import { bold } from "@jiman24/discordjs-utils";
+import { bold, random } from "@jiman24/discordjs-utils";
 import { oneLine } from "common-tags";
 import { Message, User } from "discord.js";
 import { Cat } from "./Cat";
@@ -35,27 +35,75 @@ export class Game {
       }
 
       if (!roundWinner) {
-        this.msg.channel.send(`It's a tie for both!`);
+
+        let text = "";
+        switch (attrib) {
+          case "hat": 
+            text = "It's a tie! Those are some cool cats in hats. ";
+            break;
+          case "mouth": 
+            text = "Not even a twitch of their little kitty lips, it's a tie.";
+            break;
+          case "eyes": 
+            text = "They are really staring each other down. Oh no! It's an Angry Cat standoff.";
+            break;
+          case "weapon": 
+            text = "Kitty Kitty Bang Bang! This weapons showdown is deadlocked.";
+            break;
+          case "surpriseAttack": 
+            text = "Two wildcats of power busted out their Surprise Attacks. But this stalemate is a draw.";
+            break;
+        }
+
+        this.msg.channel.send(text);
+
       } else {
         const point = roundWinner.owner.id === this.g1.owner.id ? g1Score : g2Score;
         const ownerName = roundWinner.owner.username;
-        this.msg.channel.send(
-          `${bold(ownerName)}'s cat has better ${attrib} and has ${bold(point)} points!`
-        )
+        const cat = roundWinner.cat;
+
+        let text = "";
+        switch (attrib) {
+          case "hat": 
+            text = `Are they fur-real with that hat? ${cat.name} gets ${bold(1)} point`;
+            break;
+          case "mouth": 
+            text = `Fur-get about it. ${cat.name}'s sneer is all it takes. ${bold(1)} point`;
+            break;
+          case "eyes": 
+            text = `That was a cat–astrophe. ${cat.name}'s menacing stare earns ${bold(1)} point!`;
+            break;
+          case "weapon": 
+            text = `Is that weapon even legal? Here comes claw-enforcement. ${bold(1)} point for ${bold(1)}.`;
+            break;
+          case "surpriseAttack": 
+            text = `${cat.name}'s will go down in hiss-tory for that Surprise Attack! ${bold(1)} point`;
+            break;
+        }
+
+        this.msg.channel.send(text);
       }
     }
 
-    this.msg.channel.send(
-      oneLine`Final score is ${bold(this.g1.owner.username)} ${bold(g1Score)} vs
-      ${bold(this.g2.owner.username)} ${bold(g2Score)}`
-    )
+    let winner;
 
     if (g1Score > g2Score) {
-      return this.g1;
+      winner = this.g1;
     } else if (g2Score > g1Score) {
-      return this.g2;
+      winner = this.g2;
     } else {
-      return null;
+      winner = null;
     }
+
+
+    if (winner) {
+      const loser = winner.cat.id !== this.g1.cat.id ? this.g1 : this.g2;
+      await this.msg.channel.send(`You’re a fur-midable opponent ${loser.cat.name}.`);
+      await this.msg.channel.send(`The winner is ${winner.cat.name}`);
+      await this.msg.channel.send({ embeds: [winner.cat.show()] });
+      await this.msg.channel.send(`Final score is ${bold(this.g1.cat.name)} ${bold(g1Score)} vs ${bold(this.g2.cat.name)} ${bold(g2Score)}`);
+    }
+
+    return winner;
   }
 }

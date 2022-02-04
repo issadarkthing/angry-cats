@@ -55,11 +55,11 @@ export default class extends Command {
       await msg.channel.send({ embeds: player1.cats.map(x => x.show()) });
     }
 
-    const cat1ID = await prompt.ask(
-      `Please select your fighter ${msg.author} by copy paste angry cat id`
+    const cat1Name = await prompt.ask(
+      `Choose your fighter ${msg.author}! Copy & Paste your Angry Cat name`
     );
 
-    const cat1 = player1.cats.find(cat => cat.id === cat1ID);
+    const cat1 = player1.cats.find(cat => cat.name === cat1Name);
 
     if (!cat1) {
       throw new Error("No cat found");
@@ -71,12 +71,12 @@ export default class extends Command {
       await msg.channel.send({ embeds: player2.cats.map(x => x.show()) });
     }
 
-    const cat2ID = await prompt.ask(
-      `Please select your fighter ${opponent} by copy paste angry cat id`,
+    const cat2Name = await prompt.ask(
+      `Choose your fighter ${opponent}! Copy & Paste your Angry Cat name`,
       { filter: (msg) => msg.author.id === opponent!.id }
     );
 
-    const cat2 = player2.cats.find(cat => cat.id === cat2ID);
+    const cat2 = player2.cats.find(cat => cat.name === cat2Name);
 
     if (!cat2) {
       throw new Error("No cat found");
@@ -94,10 +94,16 @@ export default class extends Command {
       }
     );
 
+
+    await msg.channel.send(`Ladies & gentlemen, welcome to the main event of the evening!`);
+    await msg.channel.send({ embeds: [cat1.show(), cat2.show()] });
+    await msg.channel.send("Best out of 5 Wins");
+    await msg.channel.send("Angry Cats, Ready? Fight!");
+    await msg.channel.send("https://tenor.com/view/tekken-get-ready-fire-motivation-battle-gif-21762793");
+
     const winner = await game.run();
 
     if (winner) {
-      msg.channel.send(`${winner.owner.username} won the battle!`);
 
       const date = DateTime.now();
 

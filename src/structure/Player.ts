@@ -4,7 +4,9 @@ import { Cat } from "./Cat";
 export class Player {
   cats: Cat[] = [];
 
-  constructor(public id: string) {}
+  constructor(
+    public id: string,
+  ) {}
 
   static fromID(id: string) {
     const player = new Player(id);
