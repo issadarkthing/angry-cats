@@ -41,7 +41,7 @@ export class Cat {
       .setColor("RANDOM")
       .addField("UID", this.id)
       .addField("Name", this.name)
-      .addField("Surprice Attack", this.surpriseAttack.toString(), true)
+      .addField("Surprise Attack", this.surpriseAttack.toString(), true)
 
     if (this.imageUrl) {
       embed.setThumbnail(this.imageUrl);
