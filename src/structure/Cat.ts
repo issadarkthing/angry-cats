@@ -8,6 +8,7 @@ export class Cat {
   eyes = 0;
   weapon = 0;
   surpriseAttack = 0;
+  surpriseAttackName = "";
   name = "";
   imageUrl = "";
   readonly max = 20;
@@ -40,7 +41,7 @@ export class Cat {
     const embed = new MessageEmbed()
       .setColor("RANDOM")
       .addField("Name", this.name)
-      .addField("Surprise Attack", this.surpriseAttack.toString(), true)
+      .addField("Surprise Attack", this.surpriseAttackName || "None", true)
 
     if (this.imageUrl) {
       embed.setThumbnail(this.imageUrl);

@@ -30,7 +30,10 @@ export default class extends Command {
     const mouth = await this.getAttribute(prompt, "Mouth");
     const eyes = await this.getAttribute(prompt, "Eyes");
     const weapon = await this.getAttribute(prompt, "Weapon");
-    const accessories = await this.getAttribute(prompt, "Surprise Attack");
+    const surpriseAttack = await this.getAttribute(prompt, "Surprise Attack");
+    const surpriseAttackName = await prompt.ask(
+      `Please enter a name for the Surprise Attack:`
+    );
     const image = await prompt.collect("Please upload an image for this angry cat:");
 
     const cat = new Cat(id);
@@ -38,8 +41,9 @@ export default class extends Command {
     cat.mouth = mouth;
     cat.eyes = eyes;
     cat.weapon = weapon;
-    cat.surpriseAttack = accessories;
+    cat.surpriseAttack = surpriseAttack;
     cat.imageUrl = image.attachments.first()!.url;
+    cat.surpriseAttackName = surpriseAttackName;
 
     cat.save();
     msg.channel.send("Saved successfully");

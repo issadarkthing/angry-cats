@@ -16,22 +16,28 @@ export default class extends Command {
 
     const input = await prompt.ask(
       oneLine`Please register new cat by using this format
-      \`UID,hat,mouth,eyes,weapon,surprise attack\`. This also supports multiline`
+      \`UID,hat,mouth,eyes,weapon,surprise attack,surprise attack name\`. This
+      also supports multiline`
     );
     
      
     const lines = input.split("\n");
+    const itemsCount = 7;
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
       const attributes = line.split(",");
 
-      if (attributes.length !== 6) {
-        throw new Error(`Error on line ${line}: more or less than 6 items given`);
+      if (attributes.length !== itemsCount) {
+        throw new Error(`Error on line ${line}: more or less than ${itemsCount} items given`);
       }
 
       for (let i = 1; i < attributes.length; i++) {
         const attribute = attributes[i];
+
+        if (i === attributes.length - 1) {
+          break;
+        }
 
         if (Number.isNaN(Number(attribute))) {
           throw new Error(`Error on line ${line}: ${attribute} is not a number`);
@@ -44,6 +50,7 @@ export default class extends Command {
       cat.eyes = Number(attributes[3]);
       cat.weapon = Number(attributes[4]);
       cat.surpriseAttack = Number(attributes[5]);
+      cat.surpriseAttackName = attributes[6];
 
       /* const collected = await prompt.collect(
         `Please upload an image for cat ${cat.id}`
