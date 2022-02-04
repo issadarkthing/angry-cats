@@ -5,7 +5,7 @@ import { Cat } from "../structure/Cat";
 import { oneLine } from "common-tags";
 
 export default class extends Command {
-  name = "register";
+  name = "multiregister";
   description = "register new cat with attributes";
 
   async exec(msg: Message) {
