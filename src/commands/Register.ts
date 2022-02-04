@@ -1,5 +1,5 @@
 import { Command } from "@jiman24/commandment";
-import { Message } from "discord.js";
+import { Message, PermissionResolvable } from "discord.js";
 import { Prompt } from "@jiman24/discordjs-prompt";
 import { validateNumber } from "@jiman24/discordjs-utils";
 import { Cat } from "../structure/Cat";
@@ -7,6 +7,7 @@ import { Cat } from "../structure/Cat";
 export default class extends Command {
   name = "register";
   description = "register new cat with attributes";
+  permissions: PermissionResolvable[] = ["ADMINISTRATOR"];
 
   private async getAttribute(prompt: Prompt, attribute: string) {
 

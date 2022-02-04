@@ -1,12 +1,12 @@
 import { Command } from "@jiman24/commandment";
-import { Message } from "discord.js";
+import { Message, PermissionResolvable } from "discord.js";
 import { client } from "..";
 
 
 export default class extends Command {
   name = "unregister";
   description = "unregister cat";
-
+  permissions: PermissionResolvable[] = ["ADMINISTRATOR"];
 
   async exec(msg: Message, args: string[]) {
 

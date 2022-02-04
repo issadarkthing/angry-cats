@@ -1,5 +1,5 @@
 import { Command } from "@jiman24/commandment";
-import { Message } from "discord.js";
+import { Message, PermissionResolvable } from "discord.js";
 import { Prompt } from "@jiman24/discordjs-prompt";
 import { Cat } from "../structure/Cat";
 import { oneLine } from "common-tags";
@@ -7,6 +7,7 @@ import { oneLine } from "common-tags";
 export default class extends Command {
   name = "multiregister";
   description = "register new cat with attributes";
+  permissions: PermissionResolvable[] = ["ADMINISTRATOR"];
 
   async exec(msg: Message) {
     const prompt = new Prompt(msg);
